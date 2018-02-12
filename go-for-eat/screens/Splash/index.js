@@ -30,14 +30,15 @@ class LoadingPage extends Component {
           let user = JSON.parse(userData).authentication;
           let entities = JSON.parse(userData).entities;
           if (entities) this.props.setEntities(entities);
-          if (user.user._id) {
+          if (user.user && user.user._id) {
             this.props.setUser(user);
             this.props.reloadUser(this.state);
             this.props.navigate('Home');
-          }
-          else {
+          } else {
             this.props.navigate('Login');
           }
+        } else {
+          this.props.navigate('Login');
         }
       });
   }
