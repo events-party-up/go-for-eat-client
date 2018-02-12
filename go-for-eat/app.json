@@ -12,6 +12,8 @@
     },
     "android": {
       "package": "com.go4eat"
-    }
+    },
+    "android.config.googleSignIn": "AIzaSyAcLjRWKGZ5-pzYoV-bDHikVBkhCh2pcD0",
+    "android.config.googleMaps.apiKey": "AIzaSyAcLjRWKGZ5-pzYoV-bDHikVBkhCh2pcD0"
   }
 }
