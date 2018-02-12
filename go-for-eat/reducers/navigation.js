@@ -14,28 +14,24 @@ const nav = (state = initialNavState, action) => {
   let nextState;
   switch (action.type) {
   case 'LOGIN_USER_REQUEST':
-    console.log('LOGIN_USER_REQUEST');
     nextState = AppNavigator.router.getStateForAction(
       NavigationActions.navigate({ routeName: 'Loading' }),
       state
     );
     break;
   case 'LOGIN_USER_SUCCESS':
-    console.log('LOGIN_USER_SUCCESS');
     nextState = AppNavigator.router.getStateForAction(
       NavigationActions.navigate({ routeName: 'Home' }),
       state
     );
     break;
   case 'LOGIN_USER_FAILURE':
-    console.log('LOGIN_USER_FAILURE', action);
     nextState = AppNavigator.router.getStateForAction(
       NavigationActions.navigate({ routeName: 'Login' }),
       state
     );
     break;
   case 'NAVIGATE':
-    console.log('NAVIGATE');
     nextState = AppNavigator.router.getStateForAction(
       NavigationActions.navigate({ routeName: action.screen }),
       state
