@@ -91,10 +91,12 @@ class Login extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+});
 
 const mapDispatchToProps = (dispatch) => ({
   serverAuth: (data) => dispatch(loginUser(data)),
   navigate: (screen) => dispatch(navigate(screen)),
 });
 
-export default connect(mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
