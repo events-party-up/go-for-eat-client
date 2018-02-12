@@ -10,6 +10,7 @@ import Profile from '../screens/Profile/Profile';
 import { CreateEvent } from '../screens/CreateEvent';
 import { EditEvent } from '../screens/EditEvent';
 import LoadingPage from '../screens/LoadingPage';
+import Splash from '../screens/Splash';
 import { Rating } from '../screens/Rating';
 
 const NavigatorWithRootScreen = (routeName, screen) => {
@@ -59,12 +60,16 @@ const HomeStack = StackNavigator({
 );
 
 export const AppNavigator = StackNavigator({
-  Loading:{
-    screen:LoadingPage,
+  Splash:{
+    screen: Splash,
     navigationOptions:{header:()=>null}
   },
   Login: {
     screen: Login,
+    navigationOptions:{header:()=>null}
+  },
+  Loading:{
+    screen:LoadingPage,
     navigationOptions:{header:()=>null}
   },
   HomeStack: {
