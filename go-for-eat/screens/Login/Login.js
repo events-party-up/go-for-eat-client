@@ -13,19 +13,6 @@ class Login extends Component {
     this.state = {};
   }
 
-
-  componentDidMount = async () => {
-    await navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        await this.setState({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        });
-        await this.loginExpo();
-      }
-    );
-  }
-
   loginGoogle = async () => {
     Expo.Google.logInAsync({
       androidClientId: GOOGLE_ANDROID_CLIENT_ID,
