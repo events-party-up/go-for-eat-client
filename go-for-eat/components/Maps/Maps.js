@@ -76,19 +76,21 @@ class Maps extends Component {
   renderMarkers = () => {
     return this.props.mapsEvents.map((id, i) => {
       const event = this.props.events[id];
-      return (
-        <Marker
-          coordinate={{
-            latitude: event.location.coordinates[1],
-            longitude: event.location.coordinates[0]
-          }}
-          style={s.marker}
-          image={MapPinImage}
-          identifier= {id}
-          onPress={e => this.onMarkerPress(e.nativeEvent)}
-          key={id}
-        />
-      );
+      if (event) {
+        return (
+          <Marker
+            coordinate={{
+              latitude: event.location.coordinates[1],
+              longitude: event.location.coordinates[0]
+            }}
+            style={s.marker}
+            image={MapPinImage}
+            identifier= {id}
+            onPress={e => this.onMarkerPress(e.nativeEvent)}
+            key={id}
+          />
+        );
+      }
     });
   }
 
