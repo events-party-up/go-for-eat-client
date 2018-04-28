@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Image, Text, View } from 'react-native';
 import { connect } from 'react-redux';
-import { FacebookButton, GoogleButton } from '../../components/Buttons';
+import { FacebookButton, GoogleButton, LinkedinButton } from '../../components/Buttons';
 import logo from '../../assets/logo/logo2x.png';
 import styles from './styles';
 import { loginUser, navigate } from '../../actions';
 import {
   FACEBOOK_APP_ID,
   GOOGLE_ANDROID_CLIENT_ID,
-  GOOGLE_IOS_CLIENT_ID
+  GOOGLE_IOS_CLIENT_ID,
 } from 'react-native-dotenv';
 
 class Login extends Component {
@@ -78,6 +78,20 @@ class Login extends Component {
     }
   }
 
+  loginLinkedin = async (result) => {
+
+    if (result.access_token) {
+      let data = {
+        accessToken: result.access_token,
+        network: 'linkedin',
+        position: this.state,
+      };
+      this.props.serverAuth(data);
+    } else {
+      return {cancelled: true};
+    }
+  };
+
   render() {
     if (this.props.loading) {
       return (<Text>Loading!</Text>);}
@@ -91,6 +105,7 @@ class Login extends Component {
         </Text>
         <FacebookButton loginFacebook={this.loginFacebook}/>
         <GoogleButton loginGoogle={this.loginGoogle}/>
+        <LinkedinButton loginLinkedin={this.loginLinkedin}/>
       </View>
     );
   }
