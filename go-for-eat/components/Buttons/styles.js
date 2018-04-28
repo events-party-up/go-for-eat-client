@@ -16,5 +16,13 @@ export default StyleSheet.create({
     padding:10,
     margin:10,
     justifyContent:'center',
+  },
+  login_button__linkedin: {
+    backgroundColor:'#094C91',
+    height:50,
+    width:200,
+    padding:10,
+    margin:10,
+    justifyContent:'center',
   }
 });
