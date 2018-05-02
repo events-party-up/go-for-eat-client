@@ -137,6 +137,7 @@ class NavBar extends Component {
     if (this.state.screen === 'Home') {
       buttons.left = this.renderButton(allButtons.create);
       buttons.right = this.renderButton(allButtons.profile);
+      // buttons.left = this.renderButton(allButtons.filter);
     } else if (this.state.screen === 'Profile') {
       buttons.left = this.renderButton(allButtons.close);
       buttons.right = this.renderButton(allButtons.logout);

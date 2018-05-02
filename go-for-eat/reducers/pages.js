@@ -104,7 +104,7 @@ const pages = (state = defaultState, action) => {
 
       }
     };
-  case 'UPDATE_QUERY_STATE':
+    case 'UPDATE_QUERY_STATE':
     const newQuery = Object.assign(state.Maps.query, action.newQuery);
     return {
       ...state,
@@ -115,6 +115,10 @@ const pages = (state = defaultState, action) => {
         },
         events: [],
       },
+      Home:{
+        ...state.Home,
+        events: [],
+      }
     };
     case 'GET_EVENTS_SUCCESS':
     const eventIds = action.response.result;

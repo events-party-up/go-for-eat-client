@@ -1,5 +1,7 @@
 //MAP COMPONENT
-import { StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
+
+const WINDOW = Dimensions.get('window');
 
 export default StyleSheet.create({
   container:{
@@ -9,9 +11,25 @@ export default StyleSheet.create({
     paddingTop: 20,
     alignItems: 'stretch',
   },
+  title: {
+    width: WINDOW.width - 40,
+    marginLeft: 20,
+    marginRight: 20,
+    fontSize: 22,
+    fontFamily: 'Roboto',
+    justifyContent: 'flex-start',
+    marginBottom: 6,
+  },
+  JobsAutocompleteContainer: {
+    position: 'relative',
+    height: 80,
+    width: WINDOW.width,
+    zIndex: 200,
+  },
   slider: {
     marginLeft: 20,
     marginRight: 20,
+    marginBottom: 40,
   },
   track: {
     height: 4,
