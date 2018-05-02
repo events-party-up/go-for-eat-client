@@ -159,7 +159,7 @@ const pages = (state = defaultState, action) => {
     };
     break;
   // case 'DELETE_EVENTS_SUCCESS':
-  //   // delete state.Home.events[action.eventId];
+  //   delete state.Home.events[action.eventId];
   //   return {
   //     ...state,
   //     events: {
