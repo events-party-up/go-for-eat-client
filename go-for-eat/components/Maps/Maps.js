@@ -39,6 +39,7 @@ class Maps extends Component {
       to: new Date(moment().endOf('day')).getTime(),
       from: new Date().getTime(),
       ratings: 0,
+      profession: '',
     };
     this.props.setQueryState(query);
     this.props.getNearbyEvents(query);
