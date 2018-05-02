@@ -24,5 +24,15 @@ export default StyleSheet.create({
     padding:10,
     margin:10,
     justifyContent:'center',
+  },
+  filter_button: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'flex-end',
+    alignItems: 'center'
+  },
+  filter_button_icon: {
+    marginTop: 20,
+    marginRight: -20
   }
 });
