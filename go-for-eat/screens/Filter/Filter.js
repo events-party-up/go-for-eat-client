@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, TextInput } from 'react-native';
 import { connect } from 'react-redux';
 import { Slider, Button } from 'react-native-elements';
 import profileStar from '../../assets/icons/profile_star.png';
 import profileStarEmpty from '../../assets/icons/profile_star_empty.png';
-import { JobsAutocomplete } from '../../components/JobsAutocomplete';
 import s from './styles';
 import { getNearbyEvents, navigateBack, setQueryState } from '../../actions';
 
@@ -50,7 +49,6 @@ class Filter extends Component {
     for (var i = 1; i <= 5; i++) {
       stars.push(this.renderStar(i));
     }
-    console.log(this.state.profession);
     return (
       <View style={s.container}>
         <Text style={s.title}>Ratings:</Text>
@@ -68,10 +66,18 @@ class Filter extends Component {
           step={1}
           onValueChange={(value) => this.setState({ratings: value})} />
           <Text style={s.title}>Jobs:</Text>
-          <View style={s.JobsAutocompleteContainer}>
-            <JobsAutocomplete
+          <View style={s.textInputContainer} >
+            <TextInput
+              ref="textInput"
+              returnKeyType={'search'}
+              autoFocus={true}
+              style={s.textInput}
               value={this.state.profession}
-              onChange={(value) => this.setState({profession: value})}
+              placeholder='Search...'
+              placeholderTextColor='grey'
+              clearButtonMode="while-editing"
+              underlineColorAndroid='red'
+              onChangeText={(value) => this.setState({profession: value})}
             />
           </View>
         <View style={s.bottomContainer}>

@@ -1,5 +1,5 @@
 //MAP COMPONENT
-import { Dimensions, StyleSheet } from 'react-native';
+import { Dimensions, PixelRatio, StyleSheet } from 'react-native';
 
 const WINDOW = Dimensions.get('window');
 
@@ -25,6 +25,21 @@ export default StyleSheet.create({
     height: 80,
     width: WINDOW.width,
     zIndex: 200,
+  },
+  textInputContainer: {
+    height: 44,
+    flexDirection: 'row',
+  },
+  textInput: {
+    flex: 1,
+    height: '100%',
+    width: WINDOW.with - 40,
+    marginLeft: 20,
+    marginRight: 20,
+    borderRadius: 0,
+    borderBottomWidth: 5 / PixelRatio.get(),
+    borderBottomColor: '#2ECC71',
+    fontSize: 20,
   },
   slider: {
     marginLeft: 20,
