@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, Text } from 'react-native';
 import { connect } from 'react-redux';
 import { Slider, Button } from 'react-native-elements';
 import profileStar from '../../assets/icons/profile_star.png';
 import profileStarEmpty from '../../assets/icons/profile_star_empty.png';
+import { JobsAutocomplete } from '../../components/JobsAutocomplete';
 import s from './styles';
 import { getNearbyEvents, navigateBack, setQueryState } from '../../actions';
 
@@ -11,11 +12,13 @@ class Filter extends Component {
   state = {
     ratings: 0,
     score: 0,
+    profession: '',
   };
 
   handleGo = async () => {
     const newQuery = {
       ratings: this.state.ratings,
+      profession: this.state.profession,
     };
     await this.props.setQueryState(newQuery);
     this.props.getNearbyEvents(this.props.query);
@@ -47,8 +50,10 @@ class Filter extends Component {
     for (var i = 1; i <= 5; i++) {
       stars.push(this.renderStar(i));
     }
+    console.log(this.state.profession);
     return (
       <View style={s.container}>
+        <Text style={s.title}>Ratings:</Text>
         <View style={s.rating_star_container}>
           {stars}
         </View>
@@ -62,6 +67,13 @@ class Filter extends Component {
           maximumValue={5}
           step={1}
           onValueChange={(value) => this.setState({ratings: value})} />
+          <Text style={s.title}>Jobs:</Text>
+          <View style={s.JobsAutocompleteContainer}>
+            <JobsAutocomplete
+              value={this.state.profession}
+              onChange={(value) => this.setState({profession: value})}
+            />
+          </View>
         <View style={s.bottomContainer}>
           {this.renderBotom()}
         </View>

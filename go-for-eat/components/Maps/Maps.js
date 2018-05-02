@@ -65,7 +65,7 @@ class Maps extends Component {
       from: new Date().getTime(),
     };
     await this.props.setQueryState(newQuery);
-    this.props.getNearbyEvents(this.props.query, true);
+    this.props.getNearbyEvents(this.props.query, false);
     this.checkSudggested();
   };
 
