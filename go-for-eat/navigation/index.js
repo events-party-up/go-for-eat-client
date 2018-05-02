@@ -12,6 +12,7 @@ import { EditEvent } from '../screens/EditEvent';
 import LoadingPage from '../screens/LoadingPage';
 import Splash from '../screens/Splash';
 import { Rating } from '../screens/Rating';
+import Filter from '../screens/Filter/Filter';
 
 const NavigatorWithRootScreen = (routeName, screen) => {
   return StackNavigator({
@@ -50,8 +51,11 @@ const HomeStack = StackNavigator({
   Rating: {
     screen: NavigatorWithRootScreen('Rating', Rating),
     navigationOptions:{header:() => null}
+  },
+  Filter: {
+    screen: NavigatorWithRootScreen('Filter', Filter),
+    navigationOptions:{header:() => null}
   }
-
 },
 {
   mode: 'modal',

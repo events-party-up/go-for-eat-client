@@ -113,32 +113,29 @@ const pages = (state = defaultState, action) => {
         query:{
           ...newQuery
         },
+        events: [],
       },
     };
-  case 'GET_EVENTS_SUCCESS':
-    if (action.response.entities.events) {
-      const eventIds = action.response.result;
-      if(eventIds.length === 0) return state;
-      const title = action.response.entities.events[eventIds[0]].when;
-      const originalEvents = action.distFetch ? [] : state.Home.events;
-      return {
-        ...state,
-        Home: {
-          ...state.Home,
-          events: [
-            ...originalEvents,
-            { title, data: eventIds }
-          ],
-        },
-        Maps: {
-          ...state.Maps,
-          events: [
-            ...new Set(state.Maps.events.concat(...eventIds))
-          ],
-        },
-      };
-    }
-    else return state;
+    case 'GET_EVENTS_SUCCESS':
+    const eventIds = action.response.result;
+    const title = action.response.entities.events[eventIds[0]].when;
+    const originalEvents = action.distFetch ? [] : state.Home.events;
+    return {
+      ...state,
+      Home: {
+        ...state.Home,
+        events: [
+          ...originalEvents,
+          { title, data: eventIds }
+        ],
+      },
+      Maps: {
+        ...state.Maps,
+        events: [
+          ...new Set(state.Maps.events.concat(...eventIds))
+        ],
+      },
+    };
   case 'SET_MAIN_EVENT':
     if (action.id) {
       return {

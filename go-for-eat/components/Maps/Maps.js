@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, ActivityIndicator, Image, Platform } from 'react-native';
 import { connect } from 'react-redux';
-import { getNearbyEvents, setQueryState, setMainEvent, disableReloadEvents } from '../../actions';
+import { getNearbyEvents, setQueryState, setMainEvent, disableReloadEvents, navigate } from '../../actions';
 import MapView, {Marker, AnimatedRegion} from 'react-native-maps';
 import s from './styles';
 import moment from 'moment';
@@ -9,6 +9,7 @@ import _ from 'lodash';
 import MapPinImage from '../../assets/icons/map_pin.png';
 import MapCenter from '../../assets/icons/map_center.png';
 import * as Animatable from 'react-native-animatable';
+import FilterButton from '../Buttons/filterButton';
 
 //const _mapView =  MapView;
 
@@ -37,6 +38,7 @@ class Maps extends Component {
       dist: 2000,
       to: new Date(moment().endOf('day')).getTime(),
       from: new Date().getTime(),
+      ratings: 0,
     };
     this.props.setQueryState(query);
     this.props.getNearbyEvents(query);
@@ -129,6 +131,10 @@ class Maps extends Component {
     return false;
   }
 
+  filterEvent = () => {
+    this.props.navigate('Filter')
+  };
+
   render() {
     return (this.props.events && this.props.query.lat &&  this.props.query.lng) ? (
       <MapView style={s.map}
@@ -155,6 +161,7 @@ class Maps extends Component {
           duration: 404,
         }}
       >
+        <FilterButton filterEvent={this.filterEvent} />
         {this.renderMarkers()}
         <Animatable.Image
           easing='ease-in-out'
@@ -185,6 +192,7 @@ const mapDispatchToProps = (dispatch) => ({
   setMainEvent: (id) => dispatch(setMainEvent(id)),
   getNearbyEvents: (queryString, distFetch) => dispatch(getNearbyEvents(queryString, distFetch)),
   disableReloadEvents: () => dispatch(disableReloadEvents()),
+  navigate: (screen) => dispatch(navigate(screen)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Maps);
